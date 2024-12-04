@@ -1,0 +1,263 @@
+/* Font Face Definition */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../fonts/vazir.eot");
+  src: url("../fonts/vazir.ttf") format("truetype"),
+    url("../fonts/vazir.woff2") format("woff2"),
+    url("../fonts/vazir.woff") format("woff");
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: "Roboto", sans-serif;
+  background: url(/images/bg-game.jpg) center/cover no-repeat;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Container */
+.container {
+  text-align: center;
+}
+
+/* Game Layout */
+.game-layout {
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-layout::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: -1;
+  border-radius: 10px;
+}
+
+/* Game Title */
+.game-title span {
+  text-shadow: 0px 2px 3px black;
+}
+
+/* Number Box Hover Effect */
+.number-box {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.number-box:hover {
+  transform: scale(1.1);
+}
+
+/* Play Button Styling */
+.btn-play {
+  border: 1px solid transparent;
+  border-bottom: 2px solid red;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.btn-play:hover {
+  border: 2px solid red;
+}
+
+/* Navigation Bar */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 10px 50px;
+  z-index: 999;
+}
+
+.nav-bar__brand-container {
+  position: relative;
+}
+
+/* Logo Styling */
+.nav-bar__brand {
+  width: 80px;
+  height: 80px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* Hover Effect for Zoom Image */
+.nav-bar__zoom-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  transition: all 0.2s ease;
+}
+
+.nav-bar__brand-container:hover .nav-bar__zoom-img {
+  width: 160px !important;
+  height: 160px !important;
+  transform: translate(100%, 60%);
+}
+
+/* Notice Banner Animation */
+.notice-banner {
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, #b032cf, rgb(15, 98, 165), #1a9137);
+  background-size: 90% 100%;
+  background-position: -100%;
+  background-repeat: no-repeat;
+  animation: scrollBackground 3s linear infinite;
+  margin: 0 0 40px 0;
+}
+
+.notice-banner:hover {
+  cursor: pointer;
+  background-size: 100% 100%;
+}
+
+/* Modal Styling */
+.modal-body {
+  height: 200px;
+}
+
+/* Random Numbers Layout */
+.random-numbers {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Slot Styling */
+.slot-border-handle {
+  background: #1f1e1e;
+  padding: 10px;
+  margin: 0 25px;
+  height: 150px;
+}
+
+.slot-bg-handle {
+  background-color: #fff;
+  width: 30%;
+  margin: auto;
+  height: 100%;
+  position: relative;
+}
+
+/* Slot Button */
+.slot-btn-handle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: red;
+  border: 0;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+/* Slot Number Styling */
+.slot-machin-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  flex: 1;
+}
+
+/* Levels Section */
+.levels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
+.levels h5 {
+  border-bottom: 3px solid black;
+}
+
+.levels .item {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: cyan;
+  color: black;
+}
+
+.number-range {
+  display: none;
+}
+
+/* Levels Hover & Active States */
+.levels .item:hover {
+  color: cyan !important;
+  background-color: black !important;
+}
+
+.levels .item.active {
+  color: black;
+  background-color: #1a9137 !important;
+}
+
+/* Game Win/Loss Banner */
+.game-win-loss {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  background-color: #1a9137;
+  display: none;
+}
+
+/* Animation for Notice Banner */
+@keyframes scrollBackground {
+  0% {
+    background-position: -1000%;
+  }
+  100% {
+    background-position: 1000%;
+  }
+}
+
+/* Responsive Design for Mobile Screens */
+@media (max-width: 768px) {
+  .nav-bar__brand-container:hover .nav-bar__zoom-img {
+    width: 100px !important;
+    height: 100px !important;
+    transform: translate(100%, 60%);
+  }
+
+  .nav-bar__brand {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Hunter</title>
+
+    <!-- Bootstrap CSS for styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb"
+      crossorigin="anonymous"
+    />
+    <!-- Icons from Bootstrap Icons and Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Custom CSS file -->
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <div class="container">
+        <!-- Counter Placeholder -->
+        <div class="counter"></div>
+        <!-- Branding Section -->
+        <div class="nav-bar__brand-container">
+          <img class="nav-bar__brand" src="/images/design (3).png" alt="Logo" />
+          <img
+            class="nav-bar__zoom-img"
+            src="/images/design (3).png"
+            alt="Zoomed Logo"
+          />
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Game Container -->
+    <div class="container game-layout my-5">
+      <!-- Game Win/Loss Message -->
+      <div class="game-win-loss">
+        <h4
+          class="game-win-loss__title m-0 d-flex align-items-center justify-content-center py-1"
+        >
+          ! Victory !
+        </h4>
+      </div>
+
+      <!-- Game Title -->
+      <h2 class="game-title my-5">
+        <span class="text-warning">NUMBER</span>
+        <span class="text-info">HUNTER</span>
+      </h2>
+
+      <!-- Game Description -->
+      <p class="game-description mx-3 px-3 fw-bold">
+        <span class="mb-3 d-block">"Welcome to Number Hunter"</span>
+        <span class="d-block">🎯 Challenge: <strong>Spot the number!</strong> 🎯</span>
+        <span class="d-block">✨ Show off your mastery! ✨</span>
+        <span class="d-block">🏆 Dominate the game and emerge victorious! 🏆</span>
+      </p>
+
+      <!-- Start Button -->
+      <a
+        class="notice-banner mb-4 d-block"
+        id="startHunt"
+        data-bs-toggle="modal"
+        data-bs-target="#slot-machine-modal"
+      >
+        Start The Hunt
+    </a>
+
+      <!-- Number Range Display -->
+      <div class="number-range">
+        <h3 style="font-family: sans-serif; font-size: 24px; font-weight: bold; color: #4CAF50;">
+          <span style="color: #FF5722;">Number Range: </span>
+          <span class="min-range" style="color: #2c2828; font-size: 28px; font-weight: bolder;">0</span>
+          <span style="color: #2c2828; font-size: 28px; font-weight: bolder;">to</span>
+          <span class="max-range" style="color: #2c2828; font-size: 28px; font-weight: bolder;">100</span>
+        </h3>
+        <!-- Feedback Placeholder -->
+        <p class="mt-4 fw-bold" id="feedback"></p>
+      </div>
+
+      <!-- Box Container for Numbers -->
+      <div id="boxes" class="row mb-3 justify-content-center"></div>
+
+      <!-- Modal for Slot Machine -->
+      <div
+        class="modal"
+        id="slot-machine-modal"
+        tabindex="-1"
+        aria-labelledby="slot-machine-modalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="slot-machine-modalLabel">Result</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+              <div class="slot-machin h-100">
+                <div class="row flex-row-reverse h-100">
+                  <!-- Random Numbers Display -->
+                  <div class="col-7">
+                    <div
+                      class="random-numbers d-flex justify-content-center flex-row-reverse align-items-center"
+                    >
+                      <!-- Slot Machine Numbers -->
+                      <div class="slot-machin-number bg-danger fs-2 text-light mx-2">1</div>
+                      <div class="slot-machin-number bg-danger fs-2 text-light mx-2">2</div>
+                      <div class="slot-machin-number bg-danger fs-2 text-light mx-2">3</div>
+                      <div class="slot-machin-number bg-danger fs-2 text-light mx-2">4</div>
+                      <div class="slot-machin-number bg-danger fs-2 text-light mx-2">5</div>
+                    </div>
+                  </div>
+
+                  <!-- Slot Machine Handle -->
+                  <div class="col-3 me-auto">
+                    <div class="slot-border-handle h-100">
+                      <div class="slot-bg-handle">
+                        <button class="slot-btn-handle rounded-circle"></button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Game Levels -->
+                  <div class="col-2 levels">
+                    <h5>Level</h5>
+                    <ul class="list p-0">
+                      <div class="item p-2 active" data-set="2">II</div>
+                      <div class="item p-2" data-set="3">III</div>
+                      <div class="item p-2" data-set="4">IIII</div>
+                    </ul>
+                  </div>
+                </div>
+                <div id="output" class="mt-3"></div>
+              </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer d-flex align-items-center justify-content-between">
+              <button type="button" class="btn play-game btn-info">PLAY</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- External JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- FontAwesome and Custom Scripts -->
+    <script src="js/all.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
