@@ -16,7 +16,7 @@
 /* Body Styling */
 body {
   font-family: "Roboto", sans-serif;
-  background: url(images/bg-game.jpg) center/cover no-repeat;
+  background: url(//images/bg-game.jpg) center/cover no-repeat;
   text-align: center;
   min-height: 100vh;
   display: flex;
